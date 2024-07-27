@@ -2,7 +2,7 @@ document.getElementById('warningButton').addEventListener('click', function() {
     startScreenTransition();
     playAlarm();
     addEscapeButton();
-    setTimeout(showWarning, 60000); // Show warning after 1 minutes
+    setTimeout(showWarning, 47500); // Show warning after 1 minutes
 });
 
 let typingTimeout; // To store the timeout for typing
@@ -212,13 +212,38 @@ function showWarning() {
     warningText.innerHTML = 'Hussein detected suspicious activity!';
     document.body.appendChild(warningText);
 
+    // Trigger fade-in
     setTimeout(function() {
         warningText.style.opacity = '1';
     }, 100);
 
+    // Trigger fade-out after 5 seconds
+    setTimeout(function() {
+        warningText.style.opacity = '0';
+    }, 5000);
+
+    // Reload after 10 seconds
     setTimeout(function() {
         window.location.reload();
-    }, 10000); // Reload after 10 seconds
+    }, 7000);
+
+    // Display "Restoring data..." button after 2 seconds
+    setTimeout(function() {
+        var restoreButton = document.createElement('button');
+        restoreButton.className = 'restore-button';
+        restoreButton.innerHTML = 'Restoring data...';
+        document.body.appendChild(restoreButton);
+
+        // Trigger fade-in for the button
+        setTimeout(function() {
+            restoreButton.style.opacity = '1';
+        }, 100);
+
+        // Trigger fade-out for the button after 3 seconds
+        setTimeout(function() {
+            restoreButton.style.opacity = '0';
+        }, 4000);
+    }, 2000);
 }
 
 function playAlarm() {

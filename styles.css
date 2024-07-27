@@ -177,7 +177,21 @@ section ul li img.icon {
     transition: opacity 1s;
     z-index: 1002;
 }
-
+.restore-button {
+    position: fixed;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Ensure smooth transition */
+    z-index: 1003;
+}
 .warning-text {
     position: fixed;
     left: 50%;
@@ -185,8 +199,11 @@ section ul li img.icon {
     transform: translateX(-50%);
     color: red;
     font-size: 2em;
+    background-color: white; /* Added background color for better visibility */
+    padding: 10px; /* Added padding for better readability */
+    border-radius: 5px; /* Added border-radius for rounded corners */
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 1s ease-in-out; /* Ensure smooth transition */
     z-index: 1003;
 }
 
@@ -279,7 +296,7 @@ section ul li img.icon {
     }
 
     .card-text {
-        bottom: 40%; /* Adjust bottom position for smaller screens */
+        bottom: 20%; /* Adjust bottom position for smaller screens */
         font-size: 1.2em;
     }
 
@@ -314,11 +331,11 @@ section ul li img.icon {
     }
 
     .card-container {
-        top: 50%; /* Further push cards upward */
+        top: 40%; /* Further push cards upward */
     }
 
     .card-text {
-        bottom: 50%; /* Adjust bottom position for the smallest screens */
+        bottom: 20%; /* Adjust bottom position for the smallest screens */
         font-size: 1em;
     }
 
