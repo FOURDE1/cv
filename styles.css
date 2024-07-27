@@ -1,4 +1,4 @@
-/* styles.css */
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -15,7 +15,7 @@ body {
     background: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Added to position the button */
+    position: relative;
 }
 
 header {
@@ -81,7 +81,6 @@ section ul li img.icon {
 }
 
 /* Warning Button */
-/* Warning Button */
 @keyframes fadeInOut {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
@@ -89,22 +88,22 @@ section ul li img.icon {
 
 .warning-button {
     position: fixed;
-    right: 100px; /* Adjusted margin from the right */
+    right: 100px;
     top: 50%;
     transform: translateY(-50%);
-    width: 120px; /* Increased width */
-    height: 120px; /* Increased height */
-    background: url('images/alarm.png') no-repeat center center; /* Use your alarm image */
-    background-size: contain; /* Ensure the image fits within the button */
-    border: none; /* Remove default button border */
+    width: 120px;
+    height: 120px;
+    background: url('images/alarm.png') no-repeat center center;
+    background-size: contain;
+    border: none;
     cursor: pointer;
-    z-index: 1000; /* Ensure it appears above other elements */
-    transition: filter 0.1s; /* Smooth color change effect */
-    animation: fadeInOut 2s infinite; /* Fade in and out */
+    z-index: 1000;
+    transition: filter 0.1s;
+    animation: fadeInOut 2s infinite;
 }
 
 .warning-button:active {
-    filter: brightness(0.7); /* Darken the image when clicked */
+    filter: brightness(0.7);
 }
 
 .card-container {
@@ -163,10 +162,9 @@ section ul li img.icon {
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure the entire image fits within the card */
+    object-fit: contain;
     border-radius: 10px;
 }
-
 
 .card-text {
     position: fixed;
@@ -191,6 +189,7 @@ section ul li img.icon {
     transition: opacity 1s;
     z-index: 1003;
 }
+
 .button {
     position: fixed;
     bottom: 10px;
@@ -202,4 +201,133 @@ section ul li img.icon {
     border-radius: 5px;
     z-index: 1002;
     cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .card {
+        width: 180px;
+        height: 270px;
+    }
+
+    .warning-button {
+        width: 100px;
+        height: 100px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    section h2 {
+        font-size: 1.3em;
+    }
+
+    .card {
+        width: 160px;
+        height: 240px;
+    }
+
+    .warning-button {
+        width: 80px;
+        height: 80px;
+        right: 10px;
+    }
+
+    .card-container {
+        width: 90%;
+        height: 60%;
+        top: 40%; /* Push cards upward */
+    }
+
+    .card {
+        margin: 10px;
+    }
+
+    .card-text {
+        bottom: 30%; /* Adjust bottom position to fit with the cards */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .card {
+        width: 140px;
+        height: 210px;
+    }
+
+    .warning-button {
+        width: 60px;
+        height: 60px;
+        right: 5px;
+    }
+
+    .card-container {
+        top: 30%; /* Further push cards upward */
+    }
+
+    .card-text {
+        bottom: 40%; /* Adjust bottom position for smaller screens */
+        font-size: 1.2em;
+    }
+
+    .warning-text {
+        font-size: 1.5em;
+    }
+
+    .button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    section h2 {
+        font-size: 1.2em;
+    }
+
+    .card {
+        width: 120px;
+        height: 180px;
+    }
+
+    .warning-button {
+        width: 50px;
+        height: 50px;
+        right: 0;
+    }
+
+    .card-container {
+        top: 50%; /* Further push cards upward */
+    }
+
+    .card-text {
+        bottom: 50%; /* Adjust bottom position for the smallest screens */
+        font-size: 1em;
+    }
+
+    .warning-text {
+        font-size: 1.2em;
+    }
+
+    .button {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
 }
