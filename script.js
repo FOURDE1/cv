@@ -250,3 +250,24 @@ function playAlarm() {
     var finalAudio = new Audio('sounds/final_alarm.mp3');
     finalAudio.play();
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const colorModeSwitch = document.getElementById('color_mode');
+    const body = document.body;
+
+    // Function to toggle dark and light mode
+    function toggleColorMode() {
+        if (colorModeSwitch.checked) {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+        } else {
+            body.classList.add('light-mode');
+            body.classList.remove('dark-mode');
+        }
+    }
+
+    // Add event listener to the checkbox
+    colorModeSwitch.addEventListener('change', toggleColorMode);
+
+    // Initialize the color mode based on the checkbox state
+    toggleColorMode();
+});
