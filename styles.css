@@ -262,7 +262,7 @@ section ul li img.icon {
     .card-container {
         width: 90%;
         height: 60%;
-        top: 40%; /* Push cards upward */
+        top: 35%; /* Push cards upward */
     }
 
     .card {
@@ -292,11 +292,11 @@ section ul li img.icon {
     }
 
     .card-container {
-        top: 30%; /* Further push cards upward */
+        top: 20%; /* Further push cards upward */
     }
 
     .card-text {
-        bottom: 20%; /* Adjust bottom position for smaller screens */
+        bottom: 15%; /* Adjust bottom position for smaller screens */
         font-size: 1.2em;
     }
 
@@ -331,11 +331,11 @@ section ul li img.icon {
     }
 
     .card-container {
-        top: 40%; /* Further push cards upward */
+        top: 30%; /* Further push cards upward */
     }
 
     .card-text {
-        bottom: 20%; /* Adjust bottom position for the smallest screens */
+        bottom: 15%; /* Adjust bottom position for the smallest screens */
         font-size: 1em;
     }
 
