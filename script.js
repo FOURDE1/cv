@@ -2,11 +2,43 @@ document.getElementById('warningButton').addEventListener('click', function() {
     startScreenTransition();
     playAlarm();
     addEscapeButton();
-    setTimeout(showWarning, 47500); // Show warning after 1 minutes
+    startCountdownTimer(47500);
+    setTimeout(showWarning, 47500);
 });
 
-let typingTimeout; // To store the timeout for typing
-let typingSound; // To store the typing sound
+function startCountdownTimer(duration) {
+    const timerElement = document.createElement('div');
+    timerElement.id = 'countdownTimer';
+    timerElement.style.position = 'fixed';
+    timerElement.style.bottom = '10px';
+    timerElement.style.right = '10px';
+    timerElement.style.color = 'red';
+    timerElement.style.fontSize = '20px';
+    timerElement.style.opacity = '1';
+    timerElement.style.zIndex = '1003';
+    document.body.appendChild(timerElement);
+
+    let remainingTime = duration / 1000; // Convert milliseconds to seconds
+
+    const interval = setInterval(() => {
+        if (remainingTime <= 0) {
+            clearInterval(interval);
+            timerElement.remove();
+        } else {
+            timerElement.textContent = remainingTime.toFixed(1) + 's';
+            remainingTime -= 0.1;
+            fadeInOut(timerElement);
+        }
+    }, 100);
+}
+
+function fadeInOut(element) {
+    element.style.transition = 'opacity 0.65s';
+    element.style.opacity = element.style.opacity == '1' ? '0' : '1';
+}
+
+let typingTimeout;
+let typingSound;
 
 function addEscapeButton() {
     setTimeout(function() {
@@ -23,29 +55,29 @@ function addEscapeButton() {
         escapeButton.style.borderRadius = '5px';
         escapeButton.style.zIndex = '1002';
         escapeButton.style.cursor = 'pointer';
-        escapeButton.style.opacity = '0'; // Start with opacity 0
-        escapeButton.style.transition = 'opacity 2s'; // Smooth transition for opacity
+        escapeButton.style.opacity = '0';
+        escapeButton.style.transition = 'opacity 2s';
         escapeButton.onclick = function() {
-            window.location.href = 'index.html'; // Replace 'index.html' with the actual URL of your CV page
+            window.location.href = 'index.html';
         };
         document.body.appendChild(escapeButton);
 
         // Trigger the fade-in effect
         setTimeout(function() {
             escapeButton.style.opacity = '1';
-        }, 100); // Small delay to ensure the transition is applied
-    }, 6000); // Delay of 5 seconds
+        }, 100);
+    }, 6000);
 }
 
 function startScreenTransition() {
     var overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.left = '0';
-    overlay.style.bottom = '0'; // Start from the bottom
+    overlay.style.bottom = '0';
     overlay.style.width = '100%';
     overlay.style.height = '0';
     overlay.style.backgroundColor = 'black';
-    overlay.style.transition = 'height 3s'; // Increase transition time
+    overlay.style.transition = 'height 3s';
     overlay.style.zIndex = '1000';
     document.body.appendChild(overlay);
 
@@ -55,7 +87,7 @@ function startScreenTransition() {
 
     setTimeout(function() {
         displayHackerMessage();
-    }, 3000); // Increase delay for displaying hacker message
+    }, 3000);
 }
 
 function displayHackerMessage() {
@@ -66,8 +98,8 @@ function displayHackerMessage() {
     hackerImg.style.top = '50%';
     hackerImg.style.transform = 'translate(-50%, -50%)';
     hackerImg.style.zIndex = '1001';
-    hackerImg.style.opacity = '0'; // Start with opacity 0
-    hackerImg.style.transition = 'opacity 2s'; // Smooth transition for opacity
+    hackerImg.style.opacity = '0';
+    hackerImg.style.transition = 'opacity 2s';
     document.body.appendChild(hackerImg);
 
     var message = document.createElement('div');
@@ -79,8 +111,8 @@ function displayHackerMessage() {
     message.style.color = 'white';
     message.style.fontSize = '2em';
     message.style.zIndex = '1001';
-    message.style.opacity = '0'; // Start with opacity 0
-    message.style.transition = 'opacity 2s'; // Smooth transition for opacity
+    message.style.opacity = '0'
+    message.style.transition = 'opacity 2s';
     document.body.appendChild(message);
 
     typeMessage('You\'ve just exploited Hussein\'s data.', message, 100, function() {
@@ -90,24 +122,24 @@ function displayHackerMessage() {
     });
 
     setTimeout(function() {
-        hackerImg.style.opacity = '1'; // Fade in
-        message.style.opacity = '1'; // Fade in
+        hackerImg.style.opacity = '1';
+        message.style.opacity = '1';
     }, 100);
 
     setTimeout(function() {
-        message.style.opacity = '0'; // Fade out slightly earlier
-    }, 4500); // Adjust the delay for how long the image stays visible
+        message.style.opacity = '0';
+    }, 4500);
 }
 
 function typeMessage(text, element, speed, callback) {
-    if (typingTimeout) clearTimeout(typingTimeout); // Clear any previous typing timeout
+    if (typingTimeout) clearTimeout(typingTimeout);
     if (typingSound) {
         typingSound.pause();
         typingSound.currentTime = 0;
     }
 
     var i = 0;
-    typingSound = new Audio('sounds/typing-sound.mp3'); // Typing sound effect
+    typingSound = new Audio('sounds/typing-sound.mp3');
 
     function type() {
         if (i < text.length) {
@@ -137,7 +169,7 @@ function displayCards() {
     var cardDates = ['23/6/2024', '15/3/2023', '20/6/2022', '4/9/2021'];
     var cardImages = ['images/PrisePulse.png', 'images/trivia-game.png', 'images/anywhere.jpeg', 'images/SimonGame.png'];
     var cardTexts = [
-        'Hussein created Price Pulse to help compare electronics Products.',
+        'Hussein created Price Pulse to help compare electronic Products.',
         'He developed a trivia game for a university competition.',
         'He built a delivery website to improve regional delivery.',
         'He implemented a Simon game to test memory.'
@@ -182,7 +214,7 @@ function flipCard(card, text) {
         document.body.appendChild(cardText);
     }
 
-    // Clear the text content before typing the new message
+
     cardText.innerHTML = '';
 
     typeMessage(text, cardText, 100, function() {
@@ -191,7 +223,7 @@ function flipCard(card, text) {
                 card.classList.remove('flipped');
                 cardText.style.opacity = '0';
             }
-        }, 3000); // Flip back after 3 seconds from the end of the typing
+        }, 3000);
     });
 
     card.classList.toggle('flipped');
@@ -204,7 +236,7 @@ function flipCard(card, text) {
 }
 
 function showWarning() {
-    var warningSound = new Audio('sounds/warning.mp3'); // Sudden warning sound
+    var warningSound = new Audio('sounds/warning.mp3');
     warningSound.play();
 
     var warningText = document.createElement('div');
@@ -212,34 +244,34 @@ function showWarning() {
     warningText.innerHTML = 'Hussein detected suspicious activity!';
     document.body.appendChild(warningText);
 
-    // Trigger fade-in
+
     setTimeout(function() {
         warningText.style.opacity = '1';
     }, 100);
 
-    // Trigger fade-out after 5 seconds
+
     setTimeout(function() {
         warningText.style.opacity = '0';
     }, 5000);
 
-    // Reload after 10 seconds
+
     setTimeout(function() {
         window.location.reload();
     }, 7000);
 
-    // Display "Restoring data..." button after 2 seconds
+
     setTimeout(function() {
         var restoreButton = document.createElement('button');
         restoreButton.className = 'restore-button';
         restoreButton.innerHTML = 'Restoring data...';
         document.body.appendChild(restoreButton);
 
-        // Trigger fade-in for the button
+
         setTimeout(function() {
             restoreButton.style.opacity = '1';
         }, 100);
 
-        // Trigger fade-out for the button after 3 seconds
+
         setTimeout(function() {
             restoreButton.style.opacity = '0';
         }, 4000);
@@ -254,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const colorModeSwitch = document.getElementById('color_mode');
     const body = document.body;
 
-    // Function to toggle dark and light mode
+
     function toggleColorMode() {
         if (colorModeSwitch.checked) {
             body.classList.add('dark-mode');
@@ -265,9 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add event listener to the checkbox
     colorModeSwitch.addEventListener('change', toggleColorMode);
 
-    // Initialize the color mode based on the checkbox state
     toggleColorMode();
 });
