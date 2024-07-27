@@ -262,7 +262,7 @@ section ul li img.icon {
     .card-container {
         width: 90%;
         height: 60%;
-        top: 35%; /* Push cards upward */
+        top: 40%; /* Push cards upward */
     }
 
     .card {
@@ -292,7 +292,7 @@ section ul li img.icon {
     }
 
     .card-container {
-        top: 20%; /* Further push cards upward */
+        top: 30%; /* Further push cards upward */
     }
 
     .card-text {
